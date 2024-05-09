@@ -18,18 +18,26 @@
             <th>PaidPrice</th>
             <th>DiscountPrice</th>
         </tr>
+        <tr th:each="record : ${paging}" th:object="${record}">
+            <td th:text="*{registerId}"></td>
+            <td th:text="*{carNumber}"></td>
+            <td th:text="*{intime}"></td>
+            <td th:text="*{outtime}"></td>
+            <td th:text="*{registerId}"></td>
+            <td th:text="*{registerId}"></td>
+        </tr>
     </table>
     <table>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item" th:classappend="${paging.number}<=0? 'disabled'">
-                    <a class="page-link" th:href="@{/articles/paging(page=${paging.number-1})}">Previous</a>
+                    <a class="page-link" th:href="@{/record(page=${paging.number-1})}">Previous</a>
                 </li>
                 <li th:each="pageNumber : ${paginationBarNumbers}" class="page-item">
-                    <a class="page-link" th:href="@{/articles/paging(page=${pageNumber})}" th:text="${pageNumber+1}">1</a>
+                    <a class="page-link" th:href="@{/record(page=${pageNumber})}" th:text="${pageNumber+1}">1</a>
                 </li>
                 <li class="page-item" th:classappend="${paging.number+1}==${paging.totalPages}? 'disabled'">
-                    <a class="page-link" th:href="@{/articles/paging(page=${paging.number+1})}">Next</a>
+                    <a class="page-link" th:href="@{/record(page=${paging.number+1})}">Next</a>
                 </li>
             </ul>
         </nav>
